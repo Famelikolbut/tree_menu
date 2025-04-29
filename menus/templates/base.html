@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tree Menu</title>
+    <style>
+        ul {
+            list-style: none;
+            padding-left: 1em;
+        }
+        a {
+            text-decoration: none;
+        }
+        .active {
+            font-weight: bold;
+            color: darkred;
+        }
+        footer {
+            margin-top: 3em;
+            border-top: 1px solid #ccc;
+            padding-top: 1em;
+        }
+        .layout {
+            display: flex;
+        }
+        .side {
+            width: 200px;
+            margin-right: 2em;
+        }
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        {% load menu_tags %}
+        <nav>
+            <h3>Main Menu</h3>
+            {% draw_menu 'main_menu' %}
+        </nav>
+    </header>
+
+    <div class="layout">
+        <aside class="side">
+            <h3>Side Menu</h3>
+            {% draw_menu 'side_menu' %}
+        </aside>
+
+        <main class="content">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer>
+        <h3>Footer Menu</h3>
+        {% draw_menu 'footer_menu' %}
+    </footer>
+</body>
+</html>
